@@ -46,22 +46,18 @@
 	window.AudioContext = window.AudioContext||window.webkitAudioContext;
 	var audioCtx = new AudioContext();
 	function play(hz) {
-		var o = audioCtx.createOscillator();
-		o.frequency.value = hz;
-		var audDes = audioCtx.destination;
-		o.start = o.start || o.noteOn;
-		o.start();
-		setTimeout(function() {
-			o.stop(0);
-		}, 200);
-	}
-	addEventListener("keydown",function(e) {
-		if (e.key == "s") {
-			console.log("play");
-			play(440);
-		};
-	});
-	
+   	var osc = audioCtx.createOscillator();
+   	osc.frequency.value = hz;
+ 	var audDes = audioCtx.destination;
+  	osc.connect(audDes);
+  	osc.start = osc.start || osc.noteOn;
+  	osc.start();
+
+setTimeout(function() { 
+osc.stop(0);
+}, 200);
+}
+
 </script>
 </body>
 </html>
