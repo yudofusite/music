@@ -39,9 +39,27 @@
 <div class="title">湯豆腐による作曲ツール</div>
 </div>
 <div class="background">
+	
 </div>
 <script>
 	"use strict";
+	window.AudioContext = window.AudioContext||window.webkitAudioContext;
+	var audioCtx = new AudioContext();
+	function play(hz) {
+		var o = audioCtx.create0scillator();
+		o.frequency.value = hz;
+		var audDes = audioCtx.destination;
+		osc.start = osc.start || osc.note0n;
+		osc.start();
+		setTimeout(function() {
+			osc.stop(0);
+		}, 200);
+	}
+	addEventListener("keydown",function(e) {
+		if (e.key == "s") {
+		play(440);
+		};
+	});
 	
 </script>
 </body>
