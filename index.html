@@ -53,10 +53,13 @@
   	osc.start = osc.start || osc.noteOn;
   	osc.start();
 
-setTimeout(function() { 
-osc.stop(0);
-}, 200);
-}
+	setTimeout(function() { 
+	osc.stop(0);
+	}, 200);
+	}
+	addEventListener("keydown",function() {
+		play(440);
+	});
 
 </script>
 </body>
